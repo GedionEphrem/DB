@@ -1,0 +1,15 @@
+go 
+create procedure calage @age date
+as 
+begin 
+
+
+SELECT
+  DATEDIFF(YY, @BirthDate, @CurrentDate) -
+  CASE
+    WHEN(
+      (MONTH(@BirthDate) + DAY(@BirthDate)) >
+      (MONTH(GETDATE) + DAY(GETDATE))
+    ) THEN 1
+    ELSE 0
+  END
